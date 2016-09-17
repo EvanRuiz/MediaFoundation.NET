@@ -1,3 +1,24 @@
+v3.1 (2016-03-23)
+
+252 defined
+167 tested
+ 78 untestable
+
+Externs
+263 defined
+216 tested
+ 45 untestable
+
+See interfaces.txt for details.  These are all the testable 
+interfaces/externs up to and including W10.
+
+Added a series of extensions to Media Foundation interfaces
+and externs.  See readme.mfext.html for more information.
+
+At this point, all testable interfaces have been tested.  No
+further work is planned for MediaFoundation.dll.
+
+-----------------------------------------------------------------
 v3.0 (2015-07-01)
 
 252 defined

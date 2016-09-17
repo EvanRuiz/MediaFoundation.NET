@@ -1,12 +1,10 @@
-There are 234 interfaces listed for Media Foundation at 
-https://msdn.microsoft.com/en-us/library/windows/desktop/ms696268%28v=vs.85%29.aspx and 
-258 externs defined at https://msdn.microsoft.com/en-us/library/windows/desktop/ms696205%28v=vs.85%29.aspx
+There are 252 interfaces in Media Foundation and 1206 externs.
 
-This doc describes the status of each of these.
+This doc describes the status of the library's version of each of these.
 
 ===================================== Interfaces =====================================
 
-These 157 interfaces have been tested (11 of these are duplicates to deal with MF bugs)
+These 165 interfaces have been tested (11 of these are duplicates to deal with MF bugs)
 
 IEVRFilterConfig
 IEVRFilterConfigEx
@@ -42,6 +40,7 @@ IMFCapturePhotoSink
 IMFCapturePreviewSink
 IMFCaptureRecordSink
 IMFCaptureSink
+IMFCaptureSink2
 IMFCaptureSource
 IMFClock
 IMFClockStateSink
@@ -123,6 +122,7 @@ IMFShutdown
 IMFSimpleAudioVolume
 IMFSinkWriter
 IMFSinkWriterCallback
+IMFSinkWriterEncoderConfig
 IMFSinkWriterEx
 IMFSourceOpenMonitor
 IMFSourceReader
@@ -135,6 +135,12 @@ IMFStreamingSinkConfig
 IMFStreamSink
 IMFStreamSinkAlt
 IMFTimecodeTranslate
+IMFTimedText
+IMFTimedTextBinary
+IMFTimedTextCueList
+IMFTimedTextNotify
+IMFTimedTextTrack
+IMFTimedTextTrackList
 IMFTimer
 IMFTopoLoader
 IMFTopology
@@ -174,59 +180,14 @@ INamedPropertyStore
 IPropertyStore
 
 ------------------------------------------------------------------------------
-These 42 interfaces are defined in the library, but have not yet been tested.
 
-IMFBufferListNotify
-IMFCaptureEngineOnSampleCallback2
-IMFCaptureSink2
-IMFCdmSuspendNotify
-IMFMediaEngineClassFactory2
-IMFMediaEngineClassFactoryEx
-IMFMediaEngineEME
-IMFMediaEngineNeedKeyNotify
-IMFMediaEngineOPMInfo
-IMFMediaEngineSrcElementsEx
-IMFMediaEngineSupportsSourceTransfer
-IMFMediaKeys
-IMFMediaKeySession
-IMFMediaKeySessionNotify
-IMFMediaSourceExtension
-IMFMediaSourceExtensionNotify
-IMFMediaStreamSourceSampleRequest
-IMFSinkWriterEncoderConfig
-IMFSourceBuffer
-IMFSourceBufferList
-IMFSourceBufferNotify
-IPlayToControlWithCapabilities
-IAudioSourceProvider
-IMFCapturePhotoConfirmation
-IMFContentDecryptorContext
-IMFContentProtectionDevice
-IMFMediaEngineWebSupport
-IMFSinkWriterCallback2
-IMFSourceBufferAppendMode
-IMFSourceReaderCallback2
-IMFTimedText
-IMFTimedTextBinary
-IMFTimedTextCue
-IMFTimedTextCueList
-IMFTimedTextFormattedText
-IMFTimedTextNotify
-IMFTimedTextRegion
-IMFTimedTextStyle
-IMFTimedTextTrack
-IMFTimedTextTrackList
-IMFVideoProcessorControl2
-IMFVideoSampleAllocatorNotifyEx
-
-------------------------------------------------------------------------------
-
-These 44 interfaces are defined in the library, but are deprecated, undocumented 
+These 78 interfaces are defined in the library, but are deprecated, undocumented 
 or otherwise untestable:
 
 IAdvancedMediaCapture
 IAdvancedMediaCaptureInitializationSettings
 IAdvancedMediaCaptureSettings
+IAudioSourceProvider
 IDirect3DDevice9Ex
 IDirect3DSurface9
 IDXVAHD_Device
@@ -234,7 +195,13 @@ IDXVAHD_VideoProcessor
 IMF2DBuffer2
 IMFASFStreamPrioritization
 IMFAsyncCallbackLogging
+IMFBufferListNotify
 IMFByteStreamTimeSeek
+IMFCaptureEngineOnSampleCallback2
+IMFCapturePhotoConfirmation
+IMFCdmSuspendNotify
+IMFContentDecryptorContext
+IMFContentProtectionDevice
 IMFDRMNetHelper
 IMFDXGIBuffer
 IMFDXGIDeviceManager
@@ -242,11 +209,25 @@ IMFDXGIDeviceManagerSource
 IMFImageSharingEngine
 IMFImageSharingEngineClassFactory
 IMFInputTrustAuthority
+IMFMediaEngineClassFactory2
+IMFMediaEngineClassFactoryEx
+IMFMediaEngineEME
+IMFMediaEngineNeedKeyNotify
+IMFMediaEngineOPMInfo
 IMFMediaEngineProtectedContent
+IMFMediaEngineSrcElementsEx
+IMFMediaEngineSupportsSourceTransfer
+IMFMediaEngineWebSupport
+IMFMediaKeys
+IMFMediaKeySession
+IMFMediaKeySessionNotify
 IMFMediaSharingEngine
 IMFMediaSharingEngineClassFactory
 IMFMediaSourceEx
+IMFMediaSourceExtension
+IMFMediaSourceExtensionNotify
 IMFMediaSourcePresentationProvider
+IMFMediaStreamSourceSampleRequest
 IMFOutputPolicy
 IMFOutputSchema
 IMFOutputTrustAuthority
@@ -261,12 +242,25 @@ IMFSecureChannel
 IMFSeekInfo
 IMFSharingEngineClassFactory
 IMFSignedLibrary
+IMFSinkWriterCallback2
+IMFSourceBuffer
+IMFSourceBufferAppendMode
+IMFSourceBufferList
+IMFSourceBufferNotify
+IMFSourceReaderCallback2
 IMFSSLCertificateManager
 IMFSystemId
+IMFTimedTextCue
+IMFTimedTextFormattedText
+IMFTimedTextRegion
+IMFTimedTextStyle
 IMFTrustedInput
 IMFTrustedOutput
+IMFVideoProcessorControl2
+IMFVideoSampleAllocatorNotifyEx
 IOPMVideoOutput
 IPlayToControl
+IPlayToControlWithCapabilities
 IPlayToSourceClassFactory
 
 ------------------------------------------------------------------------------
@@ -284,8 +278,10 @@ IDirectXVideoProcessorService
 
 ====================== Externs ===========================
 
-These 214 externs are tested
+These 216 externs are tested
 
+MFCreateAVIMediaSink
+MFCreateWAVEMediaSink
 CreateNamedPropertyStore
 CreatePropertyStore
 MFAddPeriodicCallback
@@ -502,20 +498,8 @@ UnpackRatio
 UnpackSize
 
 ------------------------------------------------------------------------------
-These 6 externs are defined in the library, but have not yet been tested.
+These 45 externs won't be tested:
 
-MFCreateAVIMediaSink
-MFCreateWAVEMediaSink
-MFCheckContentProtectionDevice
-MFCreateContentDecryptorContext
-MFCreateContentProtectionDevice
-MFIsContentProtectionDeviceSupported
-
-------------------------------------------------------------------------------
-These 43 externs won't be tested:
-
-MFCreateQualityManager
-MFSetWorkQueueClass
 MFCreateDXGIDeviceManager
 MFCreateDXGISurfaceBuffer
 MFCreateProtectedEnvironmentAccess
@@ -524,6 +508,10 @@ MFHeapAlloc
 MFHeapFree
 MFLoadSignedLibrary
 MFLockDXGIDeviceManager
+MFCheckContentProtectionDevice
+MFCreateContentDecryptorContext
+MFCreateContentProtectionDevice
+MFIsContentProtectionDeviceSupported
 MFConvertColorInfoFromDXVA
 MFConvertColorInfoToDXVA
 MFCreateCaptureEngine

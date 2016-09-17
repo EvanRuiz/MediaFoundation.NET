@@ -29,7 +29,7 @@ in Presenter.cs, but it looks something like this:
 If you want to study how this works, there are only 2 routines that are worth reading and they are both 
 in Hack.cpp.  Check out Hack::Set and Hack::QueryInterface.
 
-Be aware, this COM object masks an IUknown interface that violates COM rules by violating a *different*
+Be aware, this COM object masks an IUnknown interface that violates COM rules by violating a *different*
 set of COM rules (ie identity).  However, it appears that c# is willing to live with the violations this 
 object introduces.
 
