@@ -238,7 +238,7 @@ namespace MediaFoundation.Misc
         [PreserveSig]
         HResult GetNamedValue(
             [In, MarshalAs(UnmanagedType.LPWStr)] string pszName,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "INamedPropertyStore.GetNamedValue", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
         );
 
         [PreserveSig]
@@ -275,7 +275,7 @@ namespace MediaFoundation.Misc
         [PreserveSig]
         HResult GetValue(
             [In, MarshalAs(UnmanagedType.LPStruct)] PropertyKey key,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pv
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IPropertyStore.GetValue", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pv
             );
 
         [PreserveSig]

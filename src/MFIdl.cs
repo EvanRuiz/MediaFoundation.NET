@@ -2570,8 +2570,8 @@ namespace MediaFoundation
         HResult GetNearestKeyFrames(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid pguidTimeFormat,
             [In, MarshalAs(UnmanagedType.LPStruct)] ConstPropVariant pvarStartPosition,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "0", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvarPreviousKeyFrame,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "1", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvarNextKeyFrame
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFSeekInfo.GetNearestKeyFrames.0", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvarPreviousKeyFrame,
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFSeekInfo.GetNearestKeyFrames.1", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvarNextKeyFrame
         );
     }
 
@@ -2740,7 +2740,7 @@ namespace MediaFoundation
         [PreserveSig]
         new HResult GetItem(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFOutputPolicy.GetItem", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -2909,7 +2909,7 @@ namespace MediaFoundation
         new HResult GetItemByIndex(
             int unIndex,
             out Guid pguidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFOutputPolicy.GetItemByIndex", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -2949,7 +2949,7 @@ namespace MediaFoundation
         [PreserveSig]
         new HResult GetItem(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFOutputSchema.GetItem", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -3118,7 +3118,7 @@ namespace MediaFoundation
         new HResult GetItemByIndex(
             int unIndex,
             out Guid pguidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFOutputSchema.GetItemByIndex", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -3507,7 +3507,7 @@ namespace MediaFoundation
         [PreserveSig]
         new HResult GetItem(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPresentationDescriptor.GetItem", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -3676,7 +3676,7 @@ namespace MediaFoundation
         new HResult GetItemByIndex(
             int unIndex,
             out Guid pguidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPresentationDescriptor.GetItemByIndex", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -3724,7 +3724,7 @@ namespace MediaFoundation
         [PreserveSig]
         new HResult GetItem(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFStreamDescriptor.GetItem", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -3893,7 +3893,7 @@ namespace MediaFoundation
         new HResult GetItemByIndex(
             int unIndex,
             out Guid pguidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFStreamDescriptor.GetItemByIndex", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -3962,7 +3962,7 @@ namespace MediaFoundation
         [PreserveSig]
         new HResult GetItem(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFTopology.GetItem", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -4131,7 +4131,7 @@ namespace MediaFoundation
         new HResult GetItemByIndex(
             int unIndex,
             out Guid pguidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFTopology.GetItemByIndex", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -4202,7 +4202,7 @@ namespace MediaFoundation
         [PreserveSig]
         new HResult GetItem(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFTopologyNode.GetItem", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -4371,7 +4371,7 @@ namespace MediaFoundation
         new HResult GetItemByIndex(
             int unIndex,
             out Guid pguidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFTopologyNode.GetItemByIndex", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -4678,7 +4678,7 @@ namespace MediaFoundation
         [PreserveSig]
         new HResult GetItem(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFActivate.GetItem", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -4847,7 +4847,7 @@ namespace MediaFoundation
         new HResult GetItemByIndex(
             int unIndex,
             out Guid pguidKey,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFActivate.GetItemByIndex", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pValue
             );
 
         [PreserveSig]
@@ -5460,7 +5460,7 @@ namespace MediaFoundation
 
         [PreserveSig]
         HResult GetAllLanguages(
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant ppvLanguages
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFMetadata.GetAllLanguages", MarshalTypeRef = typeof(PVMarshaler))] PropVariant ppvLanguages
             );
 
         [PreserveSig]
@@ -5472,7 +5472,7 @@ namespace MediaFoundation
         [PreserveSig]
         HResult GetProperty(
             [In, MarshalAs(UnmanagedType.LPWStr)] string pwszName,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant ppvValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFMetadata.GetProperty", MarshalTypeRef = typeof(PVMarshaler))] PropVariant ppvValue
             );
 
         [PreserveSig]
@@ -5482,7 +5482,7 @@ namespace MediaFoundation
 
         [PreserveSig]
         HResult GetAllPropertyNames(
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant ppvNames
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFMetadata.GetAllPropertyNames", MarshalTypeRef = typeof(PVMarshaler))] PropVariant ppvNames
             );
     }
 
@@ -5726,7 +5726,7 @@ namespace MediaFoundation
         [PreserveSig]
         HResult EndConvertHNSToTimecode(
             IMFAsyncResult pResult,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pPropVarTimecode
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFTimecodeTranslate.EndConvertHNSToTimecode", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pPropVarTimecode
         );
     }
 
@@ -6458,7 +6458,7 @@ namespace MediaFoundation
 
         [PreserveSig]
         HResult GetStyles(
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pPropVarStyleArray
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFSAMIStyle.GetStyles", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pPropVarStyleArray
             );
 
         [PreserveSig]

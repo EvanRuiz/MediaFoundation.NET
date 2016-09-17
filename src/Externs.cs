@@ -69,7 +69,7 @@ namespace MediaFoundation
         [DllImport("mfplat.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
         public static extern HResult MFCreateWaveFormatExFromMFMediaType(
             IMFMediaType pMFType,
-            [Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(WEMarshaler))] out WaveFormatEx ppWF,
+            [Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "MFExtern.MFCreateWaveFormatExFromMFMediaType", MarshalTypeRef = typeof(WEMarshaler))] out WaveFormatEx ppWF,
             out int pcbSize,
             MFWaveFormatExConvertFlags Flags
         );
@@ -97,7 +97,7 @@ namespace MediaFoundation
         [DllImport("mfplat.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
         public static extern HResult MFInitMediaTypeFromWaveFormatEx(
             IMFMediaType pMFType,
-            [In, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(WEMarshaler))] WaveFormatEx ppWF,
+            [In, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "MFExtern.MFInitMediaTypeFromWaveFormatEx", MarshalTypeRef = typeof(WEMarshaler))] WaveFormatEx ppWF,
             int cbBufSize
         );
 
@@ -280,12 +280,12 @@ namespace MediaFoundation
 
         [DllImport("mf.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
         public static extern HResult MFGetSupportedSchemes(
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pPropVarSchemeArray
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "MFExtern.MFGetSupportedSchemes", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pPropVarSchemeArray
         );
 
         [DllImport("mf.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
         public static extern HResult MFGetSupportedMimeTypes(
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pPropVarSchemeArray
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "MFExtern.MFGetSupportedMimeTypes", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pPropVarSchemeArray
         );
 
         [DllImport("mf.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
@@ -297,7 +297,7 @@ namespace MediaFoundation
         public static extern HResult MFCreateSequencerSegmentOffset(
             int dwId,
             long hnsOffset,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvarSegmentOffset
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "MFExtern.MFCreateSequencerSegmentOffset", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvarSegmentOffset
         );
 
         [DllImport("mf.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
@@ -487,7 +487,7 @@ namespace MediaFoundation
 
         [DllImport("mfplat.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
         public static extern HResult MFCalculateBitmapImageSize(
-            [In, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(BMMarshaler))] BitmapInfoHeader pBMIH,
+            [In, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie="MFExtern.MFCalculateBitmapImageSize", MarshalTypeRef = typeof(BMMarshaler))] BitmapInfoHeader pBMIH,
             [In] int cbBufSize,
             out int pcbImageSize,
             [Out, MarshalAs(UnmanagedType.Bool)] out bool pbKnown
@@ -1649,7 +1649,7 @@ namespace MediaFoundation
 
         [DllImport("evr.dll", ExactSpelling = true), Obsolete("Not implemented"), SuppressUnmanagedCodeSecurity]
         public static extern HResult MFCreateVideoMediaTypeFromBitMapInfoHeader(
-            [In, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(BMMarshaler))] BitmapInfoHeader pbmihBitMapInfoHeader,
+            [In, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie="MFExtern.MFCreateVideoMediaTypeFromBitMapInfoHeader", MarshalTypeRef = typeof(BMMarshaler))] BitmapInfoHeader pbmihBitMapInfoHeader,
             int dwPixelAspectRatioX,
             int dwPixelAspectRatioY,
             MFVideoInterlaceMode InterlaceMode,

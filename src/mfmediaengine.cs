@@ -1888,7 +1888,7 @@ namespace MediaFoundation
         [PreserveSig]
         HResult GetStatistics(
             MF_MEDIA_ENGINE_STATISTIC StatisticID,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pStatistic
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFMediaEngineEx.GetStatistics", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pStatistic
             );
 
         [PreserveSig]
@@ -1925,7 +1925,7 @@ namespace MediaFoundation
         [PreserveSig]
         HResult GetPresentationAttribute(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidMFAttribute,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFMediaEngineEx.GetPresentationAttribute", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvValue
             );
 
         [PreserveSig]
@@ -1937,7 +1937,7 @@ namespace MediaFoundation
         HResult GetStreamAttribute(
             int dwStreamIndex,
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidMFAttribute,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFMediaEngineEx.GetStreamAttribute", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvValue
             );
 
         [PreserveSig]

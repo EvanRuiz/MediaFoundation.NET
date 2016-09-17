@@ -433,7 +433,7 @@ namespace MediaFoundation.EVR
 
         [PreserveSig]
         HResult GetCurrentImage(
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(BMMarshaler))] BitmapInfoHeader pBih,
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFVideoDisplayControl.GetCurrentImage", MarshalTypeRef = typeof(BMMarshaler))] BitmapInfoHeader pBih,
             out IntPtr pDib,
             out int pcbDib,
             out long pTimeStamp

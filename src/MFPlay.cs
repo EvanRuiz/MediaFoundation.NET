@@ -287,13 +287,13 @@ namespace MediaFoundation.MFPlayer
         [PreserveSig]
         HResult GetPosition(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidPositionType,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvPositionValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPMediaPlayer.GetPosition", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvPositionValue
         );
 
         [PreserveSig]
         HResult GetDuration(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidPositionType,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvPositionValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPMediaPlayer.GetDuration", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvPositionValue
         );
 
         [PreserveSig]
@@ -478,9 +478,9 @@ namespace MediaFoundation.MFPlayer
         [PreserveSig]
         HResult GetStartStopPosition(
             [Out, MarshalAs(UnmanagedType.LPStruct)] MFGuid pguidStartPositionType,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler), MarshalCookie = "a")] PropVariant pvStartValue,
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPMediaItem.GetStartStopPosition.0", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvStartValue,
             [Out, MarshalAs(UnmanagedType.LPStruct)] MFGuid pguidStopPositionType,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler), MarshalCookie="b")] PropVariant pvStopValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPMediaItem.GetStartStopPosition.1", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvStopValue
         );
 
         [PreserveSig]
@@ -511,7 +511,7 @@ namespace MediaFoundation.MFPlayer
         [PreserveSig]
         HResult GetDuration(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidPositionType,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvDurationValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPMediaItem.GetDuration", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvDurationValue
         );
 
         [PreserveSig]
@@ -535,13 +535,13 @@ namespace MediaFoundation.MFPlayer
         HResult GetStreamAttribute(
             int dwStreamIndex,
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidMFAttribute,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPMediaItem.GetStreamAttribute", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvValue
         );
 
         [PreserveSig]
         HResult GetPresentationAttribute(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidMFAttribute,
-            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvValue
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPMediaItem.GetPresentationAttribute", MarshalTypeRef = typeof(PVMarshaler))] PropVariant pvValue
         );
 
         [PreserveSig]
@@ -568,52 +568,8 @@ namespace MediaFoundation.MFPlayer
     {
         [PreserveSig]
         HResult OnMediaPlayerEvent(
-            [In, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(EHMarshaler))] MFP_EVENT_HEADER pEventHeader
+            [In, MarshalAs(UnmanagedType.CustomMarshaler, MarshalCookie = "IMFPMediaPlayerCallback.OnMediaPlayerEvent", MarshalTypeRef = typeof(EHMarshaler))] MFP_EVENT_HEADER pEventHeader
             );
-    }
-
-    internal class EHMarshaler : ICustomMarshaler
-    {
-        public IntPtr MarshalManagedToNative(object managedObj)
-        {
-            MFP_EVENT_HEADER eh = managedObj as MFP_EVENT_HEADER;
-
-            IntPtr ip = eh.GetPtr();
-
-            return ip;
-        }
-
-        // Called just after invoking the COM method.  The IntPtr is the same one that just got returned
-        // from MarshalManagedToNative.  The return value is unused.
-        public object MarshalNativeToManaged(IntPtr pNativeData)
-        {
-            MFP_EVENT_HEADER eh = MFP_EVENT_HEADER.PtrToEH(pNativeData);
-
-            return eh;
-        }
-
-        // It appears this routine is never called
-        public void CleanUpManagedData(object ManagedObj)
-        {
-        }
-
-        public void CleanUpNativeData(IntPtr pNativeData)
-        {
-            Marshal.FreeCoTaskMem(pNativeData);
-        }
-
-        // The number of bytes to marshal out - never called
-        public int GetNativeDataSize()
-        {
-            return -1;
-        }
-
-        // This method is called by interop to create the custom marshaler.  The (optional)
-        // cookie is the value specified in MarshalCookie="asdf", or "" is none is specified.
-        public static ICustomMarshaler GetInstance(string cookie)
-        {
-            return new EHMarshaler();
-        }
     }
 
     #endregion
