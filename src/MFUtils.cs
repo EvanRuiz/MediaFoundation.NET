@@ -1591,6 +1591,13 @@ namespace MediaFoundation.Misc
             PropVariantClear(this);
         }
 
+        // Overwrites the content of the PropVariant without releasing 
+        // the content.
+        public void Clobber()
+        {
+            type = VariantType.None;
+        }
+
         #region IDisposable Members
 
         protected override void Dispose(bool disposing)
@@ -2695,6 +2702,47 @@ namespace MediaFoundation.Misc
 
     public static class MFDump
     {
+        public static string LookupInterface(Guid iid)
+        {
+            string sGuidString = iid.ToString("B");
+            string sName;
+
+            // Check current user's interface list
+            string sKeyName = string.Format("HKEY_CURRENT_USER\\Software\\Classes\\Interface\\{0}", sGuidString);
+            sName = (string)Microsoft.Win32.Registry.GetValue(sKeyName, null, null);
+
+            if (sName == null)
+            {
+                // Check system interface list
+                sKeyName = string.Format("HKEY_CLASSES_ROOT\\Interface\\{0}", sGuidString);
+                sName = (string)Microsoft.Win32.Registry.GetValue(sKeyName, null, null);
+            }
+
+            if (sName == null)
+            {
+                // Walk all the interfaces in the current assembly
+                System.Reflection.Assembly a = System.Reflection.Assembly.GetExecutingAssembly();
+                Type[] mtypes = a.GetTypes();
+                foreach(Type t in mtypes)
+                {
+                    if (t.IsInterface)
+                    {
+                        if (t.GUID == iid)
+                        {
+                            sName = t.Name;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (sName == null)
+            {
+                // If all else fails, just use the guid string.
+                sName = sGuidString;
+            }
+
+            return sName;
+        }
         public static string LookupName(Type t, Guid gSeeking)
         {
             System.Reflection.FieldInfo[] fia = t.GetFields(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
@@ -3380,7 +3428,12 @@ namespace MediaFoundation.Misc
                         // Copy in the (empty) PropVariant.  In theory we could
                         // just zero out the first 2 bytes (the VariantType),
                         // but since PropVariantClear wipes the whole struct,
-                        // that's what we do here to be safe.
+                        // that's what we do here to be safe.  It might seem
+                        // like you could leave the memory uninitialized since
+                        // the unmanaged code is just going to overwrite it.
+                        // But there's always the chance that they'll leave it
+                        // unchanged, which would result in us (trying to)
+                        // marshal back garbage.
                         Marshal.StructureToPtr(t.m_obj, t.m_ptr, false);
 
                         break;
@@ -3415,6 +3468,12 @@ namespace MediaFoundation.Misc
                         // native pointer that we received in
                         // MarshalNativeToManaged.
                         Marshal.StructureToPtr(t.m_obj, t.m_ptr, false);
+
+                        // If we have used StructureToPtr to copy the variant,
+                        // then we made a bitwise copy of it.  Which means
+                        // t.m_ptr now 'owns' any pointers it contains, and we
+                        // mustn't attempt to free them ourselves.
+                        t.m_obj.Clobber();
 
                         break;
                     }
