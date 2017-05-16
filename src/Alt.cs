@@ -191,6 +191,7 @@ namespace MediaFoundation.Alt
         );
     }
 
+    // This has the same "returning an interface" problem as IMFGetServiceAlt.
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
     Guid("7FEE9E9A-4A89-47A6-899C-B6A53A70FB67"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -397,8 +398,15 @@ namespace MediaFoundation.Alt
 
     #region Bugs in Vista that appear to be fixed in W7
 
-    public class MFExternAlt
+    static public class MFExternAlt
     {
+        [DllImport("mfplat.dll", ExactSpelling = true),
+        System.Security.SuppressUnmanagedCodeSecurity]
+        public static extern HResult MFRegisterLocalSchemeHandler(
+            [In, MarshalAs(UnmanagedType.LPWStr)] string szScheme,
+            IMFActivateImpl pActivate
+        );
+
         [DllImport("MFPlat.dll", ExactSpelling = true), SuppressUnmanagedCodeSecurity]
         public static extern HResult MFCreateEventQueue(
             out IMFMediaEventQueueAlt ppMediaEventQueue
